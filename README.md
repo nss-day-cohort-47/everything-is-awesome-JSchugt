@@ -7,7 +7,7 @@ Following are the features they would like to implement:
 1. Emmet's favorite color is now red, change the functionality of the `Show Blue Legos` button to show red Legos. Be sure to update your code to reflect this change.
 1. Lucy would like to display her favorite color of blocks too. Add a button that when clicked will display green Legos.
 1. Some bricks have notes. If a brick has notes, include them on the brick detail.
-1. Lucy and Emmet would like the brick color names to be all capital letters. Add a `helper function` and invoke it to capitalize the brick name.
+1. ##Lucy and Emmet would like the brick color names to be all capital letters. Add a `helper function` and invoke it to capitalize the brick name.
 1. Dropdowns are all the rage. The Builders would like one added to the nav area to show specific bricks by material.
 
 **Brick Materials:**
