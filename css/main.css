@@ -13,3 +13,8 @@ small {
 nav {
   margin-top: 1em;
 }
+
+.block-warpper {
+  margin-top: 0;
+  margin-bottom: 0;
+}

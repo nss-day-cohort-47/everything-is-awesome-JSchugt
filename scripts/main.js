@@ -5,13 +5,23 @@ import { makeLegoList } from './legos/LegoList.js';
 const navElement = document.querySelector("nav");
 
 navElement.addEventListener("click", (event) => {
-	if (event.target.id === "showBlue") {
-		filterLegos("Blue")
+	if (event.target.id === "showRed") {
+		filterLegos("Red")
 	} else if (event.target.id === "showAll") {
 		makeLegoList(useLegos())
+	} else if(event.target.id === "showGreen"){
+		filterLegos("Green")
 	}
 })
+navElement.addEventListener("change", (event)=>{
+	const material = document.querySelector("#marterialSelect").value;
+	if( material === "NONE"){
+		makeLegoList(useLegos())
+	} else {
+		legosByMaterial(document.querySelector("#marterialSelect").value)
+	}
 
+})
 const filterLegos = (whatFilter) => {
 	const filterArray = useLegos().filter(singleLego => {
 		if (singleLego.LegoName.includes(whatFilter)) {
@@ -20,8 +30,23 @@ const filterLegos = (whatFilter) => {
 	})
 	makeLegoList(filterArray);
 }
-
-
+const legosByMaterial = (whatMaterial) => {
+	const materialArray = useLegos().filter(singleLego => {
+		if(singleLego.Material === whatMaterial){
+			return singleLego;
+		}
+	})
+	makeLegoList(materialArray);
+}
+const legosById = (whichId) => {
+	const legoId = useLegos().filter(singleLego => {
+		if(singleLego.LegoId === whichId){
+			return singleLego;
+		}
+	})
+	console.log(legoId)
+	makeLegoList(legoId)
+}
 const startEIA = () => {
 	loadLegos()
 	.then(legoArray => {
@@ -29,5 +54,12 @@ const startEIA = () => {
 	})
 
 }
+navElement.addEventListener("keyup", event => {
+	if(event.key === "Enter"){
+		if(event.target.id === "searchBar"){
+			legosById(document.getElementById("searchBar").value)
+		}
 
+	}
+})
 startEIA();
