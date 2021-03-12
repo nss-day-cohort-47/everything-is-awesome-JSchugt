@@ -9,13 +9,13 @@ navElement.addEventListener("click", (event) => {
 		filterLegos("Red")
 	} else if (event.target.id === "showAll") {
 		makeLegoList(useLegos())
-	} else if(event.target.id === "showGreen"){
+	} else if (event.target.id === "showGreen") {
 		filterLegos("Green")
 	}
 })
-navElement.addEventListener("change", (event)=>{
+navElement.addEventListener("change", (event) => {
 	const material = document.querySelector("#marterialSelect").value;
-	if( material === "NONE"){
+	if (material === "NONE") {
 		makeLegoList(useLegos())
 	} else {
 		legosByMaterial(document.querySelector("#marterialSelect").value)
@@ -32,7 +32,7 @@ const filterLegos = (whatFilter) => {
 }
 const legosByMaterial = (whatMaterial) => {
 	const materialArray = useLegos().filter(singleLego => {
-		if(singleLego.Material === whatMaterial){
+		if (singleLego.Material === whatMaterial) {
 			return singleLego;
 		}
 	})
@@ -40,23 +40,26 @@ const legosByMaterial = (whatMaterial) => {
 }
 const legosById = (whichId) => {
 	const legoId = useLegos().filter(singleLego => {
-		if(singleLego.LegoId === whichId){
+		if (singleLego.LegoId === whichId) {
 			return singleLego;
 		}
 	})
-	console.log(legoId)
-	makeLegoList(legoId)
+	if (legoId.length > 0) {
+		makeLegoList(legoId)
+	} else {
+		document.getElementById("all-legos").innerHTML = `<h2> I can't find ${whichId} did we use it in the Eiffel Tower</h2>`
+	}
 }
 const startEIA = () => {
 	loadLegos()
-	.then(legoArray => {
-		makeLegoList(legoArray)
-	})
+		.then(legoArray => {
+			makeLegoList(legoArray)
+		})
 
 }
 navElement.addEventListener("keyup", event => {
-	if(event.key === "Enter"){
-		if(event.target.id === "searchBar"){
+	if (event.key === "Enter") {
+		if (event.target.id === "searchBar") {
 			legosById(document.getElementById("searchBar").value)
 		}
 
