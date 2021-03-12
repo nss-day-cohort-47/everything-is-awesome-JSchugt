@@ -18,7 +18,7 @@ navElement.addEventListener("change", (event) => {
 	if (material === "NONE") {
 		makeLegoList(useLegos())
 	} else {
-		legosByMaterial(document.querySelector("#marterialSelect").value)
+		legosByMaterial(material)
 	}
 
 })
